@@ -18,9 +18,9 @@ function App() {
   const getWeather = async (e) => {
       e.preventDefault()
       const city = e.target.elements.city.value;
-      const data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-      if(data.status === 200){
-        const weather = await data.json()
+      const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+      if(response.status === 200){
+        const weather = await response.json()
         const cityName = weather.name
         const temperature = parseInt(weather.main.temp - 273.15)
         const weatherDesc = weather.weather[0].description
